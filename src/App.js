@@ -1,11 +1,54 @@
 import logo from './logo.svg';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './Layouts/Main';
+import Home from './Pages/Home/Home';
+import Faq from './Pages/Faq/Faq';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
+import Courses from './Pages/Courses/Courses';
+import Blog from './Pages/Blog/Blog';
+import NotFound from './Layouts/NotFound';
 
+const router = createBrowserRouter([
+  {
+    path:'/',
+    element:<Main></Main>,
+    children:[
+      {
+        path:'/',
+        element:<Home></Home>
+      },
+      {
+        path:'/blog',
+        element:<Blog></Blog>
+      },
+      {
+        path:'/faq',
+        element:<Faq></Faq>
+      },
+      {
+        path:'/login',
+        element:<Login></Login>
+      },
+      {
+        path:'/register',
+        element:<Register></Register>
+      },
+      {
+        path:'/courses',
+        element:<Courses></Courses>
+      },
+    ]
+  },
+  {
+    path:'*',
+    element:<NotFound></NotFound>
+  }
+])
 function App() {
   return (
-    <div className="App">
-     E-Learning
-    </div>
+   <RouterProvider router={router}></RouterProvider>
   );
 }
 
