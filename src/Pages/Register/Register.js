@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 
 export default function Register() {
+  const {logout, loginWithEmailAndPassword, registerWithEmailAndPassword, googleSignIn, githubSignIn, user, loading} = useContext(AuthContext);
+
+  const handleRegistration =(e)=>{
+    e.preventDefault();
+    const form = e.target;
+    const displayName = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -10,35 +22,35 @@ export default function Register() {
       <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <div className="card-body">
+      <form onSubmit={handleRegistration} className="card-body">
       <div className="form-control">
           <label className="label">
             <span className="label-text">Name</span>
           </label>
-          <input type="text" placeholder="name" className="input input-bordered" />
+          <input type="text" name='name' placeholder="name" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Photo Url</span>
           </label>
-          <input type="text" placeholder="Photo Url" className="input input-bordered" />
+          <input type="text" name='photoURL' placeholder="Photo Url" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" className="input input-bordered" />
+          <input type="email" name='email' placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" className="input input-bordered" />
+          <input name='password' type="password" placeholder="password" className="input input-bordered" />
         </div>
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
