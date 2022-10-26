@@ -10,6 +10,8 @@ import Courses from './Pages/Courses/Courses';
 import Blog from './Pages/Blog/Blog';
 import NotFound from './Layouts/NotFound';
 import PrivateRoute from './routers/PrivateRoute';
+import CourseByCategory from './Pages/CourseByCategory/CourseByCategory';
+import ShowCourses from './Componants/ShowCourses/ShowCourses';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,22 @@ const router = createBrowserRouter([
       },
       {
         path:'/courses',
-        element:<PrivateRoute><Courses></Courses></PrivateRoute>
+        // loader: ()=>fetch('http://localhost:5000/courses'),
+        element:<PrivateRoute><Courses></Courses></PrivateRoute>,
+        children:[
+          {
+            path:'/courses',
+            loader: ()=>fetch('http://localhost:5000/courses'),
+            element:<ShowCourses></ShowCourses>
+          },
+          {
+            path:'/categories/:id',
+            loader: (params)=> {
+              return fetch(`http://localhost:5000/categories/${params.id}`);
+            },
+            element:<CourseByCategory></CourseByCategory>
+          }
+        ]
       },
     ]
   },
