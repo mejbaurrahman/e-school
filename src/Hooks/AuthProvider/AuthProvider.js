@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import { useState } from 'react';
-import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getAuth } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 import { useEffect } from 'react';
 import app from '../../Firebase/Firebase.init';
 
@@ -17,29 +17,20 @@ const githubProvider = new GithubAuthProvider();
 
  const loginWithEmailAndPassword =(email, password)=>{
   setLoading(true);
-  signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+ return signInWithEmailAndPassword(auth, email, password)
+  
 
+ }
+
+ const updateProfileWithDisplayNameAndPhoto =(name, photo)=>{
+ return updateProfile(auth.currentUser, {
+    displayName:name, photoURL:photo
+  })
  }
  const registerWithEmailAndPassword =(email, password)=>{
   setLoading(true);
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+  return createUserWithEmailAndPassword(auth, email, password);
+  
 
   }
   const logout =()=>{
@@ -75,7 +66,9 @@ const githubProvider = new GithubAuthProvider();
          const uid = user.uid;
          setUser(user);
          setLoading(false);
-        
+       }else{
+          setUser({});
+          setLoading(false);
        }
      });
      return ()=>{
@@ -83,7 +76,7 @@ const githubProvider = new GithubAuthProvider();
      }
     },[user])
 
-    const authUser = {logout, loginWithEmailAndPassword, registerWithEmailAndPassword, googleSignIn, githubSignIn, user, loading}
+    const authUser = {logout,setUser, loginWithEmailAndPassword,updateProfileWithDisplayNameAndPhoto, auth, registerWithEmailAndPassword, googleSignIn, githubSignIn, user, loading}
   return (
     <AuthContext.Provider value={authUser}>
         {children}

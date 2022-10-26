@@ -1,18 +1,20 @@
-import React from 'react'
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Link, useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider'
+
 
 export default function Login() {
 
-  const {logout, loginWithEmailAndPassword, registerWithEmailAndPassword, googleSignIn, githubSignIn, user, loading} = useContext(AuthContext);
- 
-
-  const handleGithubSignIn=()=>{
+  const { loginWithEmailAndPassword, googleSignIn, githubSignIn, user, loading} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleGithubSignIn=(e)=>{
+    e.preventDefault();
     githubSignIn()
     .then((result) => {
       const user = result.user;
       console.log(user);
+      navigate('/', {replace:true});
+      
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -20,7 +22,8 @@ export default function Login() {
     // ...
   });
 }
-  const handleGoogleSignIn=()=>{
+  const handleGoogleSignIn=(e)=>{
+    e.preventDefault();
       googleSignIn()
       .then((result) => {
         const user = result.user;
@@ -38,7 +41,16 @@ export default function Login() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    loginWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      form.reset();
+      navigate('/');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
   }
   return (
     <div className=''>
