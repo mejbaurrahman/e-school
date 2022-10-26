@@ -13,9 +13,12 @@ useEffect(()=>{
   return (
     <div className='p-3'>
         <ul className='no-underline'>
+            <li className='mb-2 hover:bg-primary rounded py-2 pl-2 hover:bg-opacity-20'>
+                <Link to='/courses'>All Categories</Link>
+             </li>
             {
              categories.map(category=><li className='mb-2 hover:bg-primary rounded py-2 pl-2 hover:bg-opacity-20' key={category.id}>
-                <Link to={`/categories/${category.id}`}>{category.name}</Link>
+                <Link to={`/courses/category/${category.id}`}>{category.name}</Link>
              </li>)
             }
         </ul>

@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/courses',
-        // loader: ()=>fetch('http://localhost:5000/courses'),
+       loader: ()=>fetch('http://localhost:5000/courses'),
         element:<PrivateRoute><Courses></Courses></PrivateRoute>,
         children:[
           {
@@ -49,9 +49,10 @@ const router = createBrowserRouter([
             element:<ShowCourses></ShowCourses>
           },
           {
-            path:'/categories/:id',
-            loader: (params)=> {
-              return fetch(`http://localhost:5000/categories/${params.id}`);
+            path:'/courses/category/:id',
+            loader: ({params})=> {
+              console.log(params);
+              return fetch(`http://localhost:5000/courses/${params.id}`);
             },
             element:<CourseByCategory></CourseByCategory>
           }
