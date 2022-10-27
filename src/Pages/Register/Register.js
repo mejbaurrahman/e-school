@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 
 export default function Register() {
-  const { registerWithEmailAndPassword,setUser,logout,updateProfileWithDisplayNameAndPhoto} = useContext(AuthContext);
+  const { registerWithEmailAndPassword,setUser,dark,logout,updateProfileWithDisplayNameAndPhoto} = useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegistration =(e)=>{
     e.preventDefault();
@@ -44,35 +44,36 @@ export default function Register() {
   }
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className={`hero min-h-screen ${dark? 'bg-slate-600': 'bg-base-200'}`}>
+      <div className={`hero-content flex-col flex-row-reverse ${dark? 'bg-slate-600':'bg-base-200'}`}>
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Register now!</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+    <h1 className={`text-5xl font-bold text-center ${dark? 'text-white': 'text-black'}`}>Registration!</h1>
+    <p className={`py-6 text-center ${dark? 'text-white': 'text-black'}`}>Register now to checkout our courses and get special offer.</p>
+
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className={`card flex-shrink-0 w-full max-w-sm shadow-2xl ${dark? 'bg-slate-900':'bg-base-100'}`}>
       <form onSubmit={handleRegistration} className="card-body">
       <div className="form-control">
           <label className="label">
-            <span className="label-text">Full Name</span>
+            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Full Name</span>
           </label>
           <input type="text" name='name' placeholder="name" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Photo Url</span>
+            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Photo Url</span>
           </label>
           <input type="text" name='photoURL' placeholder="Photo Url" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Email</span>
           </label>
           <input type="email" name='email' placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Password</span>
+            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Password</span>
           </label>
           <input name='password' type="password" placeholder="password" className="input input-bordered" />
         </div>
@@ -80,6 +81,9 @@ export default function Register() {
           <button className="btn btn-primary">Register</button>
         </div>
       </form>
+      <div className={`mx-auto mb-3 ${dark? 'text-white':'text-black'}`}>
+        Already User? <Link to='/login' className='underline text-primary'>Login</Link>
+      </div>
     </div>
   </div>
 </div>
