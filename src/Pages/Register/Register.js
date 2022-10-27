@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 
 export default function Register() {
   const { registerWithEmailAndPassword,setUser,logout,updateProfileWithDisplayNameAndPhoto} = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const handleRegistration =(e)=>{
     e.preventDefault();
     const form = e.target;
@@ -19,7 +20,10 @@ export default function Register() {
       .then(()=>{
           console.log('photo updated');
           console.log(user);
-          setUser(user);
+          // setUser(user);
+          setTimeout(()=>{
+            alert('Succesfully Registered! Please login now!')
+          },2000)
           logout();
       }).catch((error)=>{
         console.log(error.message);
@@ -27,6 +31,7 @@ export default function Register() {
       
       
       // ...
+      navigate('/login');
       form.reset();
     })
     .catch((error) => {
