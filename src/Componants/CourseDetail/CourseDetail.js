@@ -9,17 +9,21 @@ import ReactToPdf from "react-to-pdf";
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 
 const ref = createRef();
-const options = {
-  orientation: 'landscape',
-  unit: 'in',
-  
-};
-export default function CourseDetail() {
 
+export default function CourseDetail() {
+ 
     const loader = useLoaderData();
     console.log(loader);
     const {name, _id, categoryName, photo, fee, participants, details,time, describe} = loader;
     const {dark} = useContext(AuthContext);
+    const options = {
+      orientation: 'landscape',
+      unit: 'in',
+      style: {
+        backgroundColor: `${dark? '#333': '#fff'}`
+      }
+      
+    };
   return (
     <div className={`p-3 m-2 shadow-xl ${dark? 'bg-slate-800': 'bg-base-100'}`}>
     <div className='flex md:justify-start justify-center'>
@@ -29,7 +33,7 @@ export default function CourseDetail() {
         )}
     </ReactToPdf>
     </div>
-    <div className='mt-3 pt-2 mt-3' ref={ref}>
+    <div className={`mt-3 pt-2 mt-3 ${dark? 'bg-slate-800': 'bg-base-100'}`} ref={ref}>
         <div className="card">
   <figure><img src={photo} alt="Album"/></figure>
   <div className="card-body">
@@ -38,9 +42,9 @@ export default function CourseDetail() {
     <p className={`${dark? 'text-white': 'text-black'}`}>{details}</p>
     <p className={`${dark? 'text-white': 'text-black'}`}><span className='text-2xl font-semibold'>Course Details:</span> {describe}</p>
     <div className=''>
-       <p className={`${dark? 'text-white':'text-black'}`}>Particpants: <FontAwesomeIcon icon={faUser}></FontAwesomeIcon> {participants}</p>
-       <p className={`${dark? 'text-white':'text-black'}`}>Course Fee: <FontAwesomeIcon icon={faMoneyCheck}></FontAwesomeIcon> {fee} Taka</p>
-       <p className={`${dark? 'text-white':'text-black'}`}>Duration: <FontAwesomeIcon icon={faCalendarCheck}></FontAwesomeIcon> {time}</p>
+       <p className={`${dark? 'text-white':'text-black'}`}>Particpants: <FontAwesomeIcon className={`${dark? 'text-white':'text-black'}`} icon={faUser}></FontAwesomeIcon> {participants}</p>
+       <p className={`${dark? 'text-white':'text-black'}`}>Course Fee: <FontAwesomeIcon className={`${dark? 'text-white':'text-black'}`} icon={faMoneyCheck}></FontAwesomeIcon> {fee} Taka</p>
+       <p className={`${dark? 'text-white':'text-black'}`}>Duration: <FontAwesomeIcon className={`${dark? 'text-white':'text-black'}`} icon={faCalendarCheck}></FontAwesomeIcon> {time}</p>
     </div>
     <div className="card-actions justify-end">
     

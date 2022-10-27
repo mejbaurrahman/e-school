@@ -44,7 +44,7 @@ export default function Checkout() {
        Category:  {name}
       </div>
       <div className={`col text-center text-xl font-semibold mb-3 flex justify-center items-center mx-2 ${dark? 'bg-slate-900 text-white':'bg-base-200'}`}>
-        Total Fee:  {fee}Taka
+        Total Fee:  {fee} taka
       </div>
     </div>
     <div className='flex md:justify-end justify-center'>

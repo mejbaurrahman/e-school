@@ -1,3 +1,5 @@
+import { faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,6 +16,7 @@ export default function CourseCard({course}) {
   <div className="card-body">
     <h2 className={`card-title ${dark? 'text-white': 'text-black'}`}>{name}</h2>
     <p className={`${dark? 'text-white': 'text-black'}`}>{details}</p>
+    <p className={`${dark? 'text-white': 'text-black'}`}><FontAwesomeIcon className='mx-2' icon={faMoneyCheck}></FontAwesomeIcon>{fee} taka</p>
     <div className="card-actions justify-end">
       <Link to={`/courses/${_id}`}><button className="btn btn-primary">Details</button></Link>
     </div>
