@@ -7,5 +7,7 @@ import "leaflet/dist/leaflet.css";
 import Leaflet from "../LeafLet";
 
 export default function LocateUs() {
-  return <Leaflet />;
+  return <>
+  <Leaflet />
+  </>
 }

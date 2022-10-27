@@ -9,7 +9,7 @@ export default function Main() {
     <div className='md:container lg:container md: mx-auto lg: mx-auto'>
         <Navigation></Navigation>
         <Outlet></Outlet>
-        <LocateUs></LocateUs>
+        {/* <LocateUs></LocateUs> */}
         <Footer></Footer>
     </div>
   )

@@ -28,7 +28,7 @@ class Leaflet extends Component {
   render() {
     return (
       <MapContainer
-        style={{ height: "480px", width: "100%" }}
+        style={{ height: "400px", width:'100%' }}
         zoom={8}
         center={[23.745589, 90.15972]}
       >
