@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ToggleButton from 'react-toggle-button';
+import './Navigation.css';
+
 import DarkModeToggle from "react-dark-mode-toggle";
 import { AuthContext } from '../../../Hooks/AuthProvider/AuthProvider';
 import logo from '../../../images/logo.png';
 
 export default function Navigation() {
 
-  const {user, loading, logout, dark, setDark} = useContext(AuthContext);
+  const {user, logout, dark, setDark} = useContext(AuthContext);
   return (
   <div className='md:container mx-auto'>
 <div className={`navbar ${dark? 'bg-slate-700 text-white': 'bg-base-100'}`}>
@@ -61,16 +62,7 @@ export default function Navigation() {
         user.uid? <></> :<><li><Link to='/login'>Login</Link></li>
         <li><Link to='/register'>Register</Link></li></>
       }
-       {/* <li className='text-3xl'>
-       <ToggleButton
-  value={ dark }
-  onToggle={(value) => {
-    console.log(dark);
-    setDark(
-      !value)
-  }} />
-
-      </li > */}
+       
        
       <li className='text-xl'>
       <div className='flex'>
@@ -90,14 +82,19 @@ export default function Navigation() {
       
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end ">
    {
     user.uid?  <div className="dropdown dropdown-end">
-    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+    <label tabIndex={0} className="btn btn-ghost btn-circle showName  avatar">
+    <div className='display-name w-20'>
+        <span >{user?.displayName}</span>
+      </div>
       <div className="w-10 rounded-full">
-        <img src={ user?.photoURL}/>
+        <img className='' src={ user?.photoURL}/>
+       
       </div>
     </label>
+
     <ul tabIndex={0} className={`menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 ${dark? 'bg-slate-800':'bg-base-100'}`}>
       <li className={`${dark? 'text-white':'text-black'}`}>
          <Link  to='/profile'>{user?.displayName}</Link>

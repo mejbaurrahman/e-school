@@ -1,0 +1,16 @@
+.showName{
+    position: relative;
+}
+
+.showName .display-name{
+    position: absolute;
+    top: 20px;
+    left: -80px;
+    z-index: 1;
+    display: none;
+}
+
+.showName:hover .display-name{
+    /* display: block; */
+    display: block;
+}
