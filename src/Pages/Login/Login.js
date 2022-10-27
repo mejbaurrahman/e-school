@@ -3,22 +3,21 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider'
 import { faFacebook, faGithub, faGoogle, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 
 export default function Login() {
-
   const { loginWithEmailAndPassword, googleSignIn, githubSignIn, user, dark, loading} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
-  console.log(from);
   const handleGithubSignIn=(e)=>{
     e.preventDefault();
     githubSignIn()
     .then((result) => {
       const user = result.user;
-      console.log(user);
       navigate(from, {replace:true});
       
     // ...
@@ -56,7 +55,13 @@ export default function Login() {
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
+      toast.error(error.message,{
+        style: {
+          borderRadius: '10px',
+          background: `${dark? '#333': '#fff'}`,
+          color: `${dark? '#fff': '#333'}`,
+        },
+    })
     });
   }
   return (
@@ -99,6 +104,10 @@ export default function Login() {
   </div>
 
 </div>
+<Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     </div>
   )
 }

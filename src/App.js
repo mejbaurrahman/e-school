@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        loader: ()=>fetch('http://localhost:5000/courses'),
+        loader: ()=>fetch('https://e-school-server-nine.vercel.app/courses'),
         element:<Home></Home>
       },
       {
@@ -45,19 +45,19 @@ const router = createBrowserRouter([
       },
       {
         path:'/courses',
-       loader: ()=>fetch('http://localhost:5000/courses'),
+       loader: ()=>fetch('https://e-school-server-nine.vercel.app/courses'),
         element:<Courses></Courses>,
         children:[
           {
             path:'/courses',
-            loader: ()=>fetch('http://localhost:5000/courses'),
+            loader: ()=>fetch('https://e-school-server-nine.vercel.app/courses'),
             element:<ShowCourses></ShowCourses>
           },
           {
             path:'/courses/category/:id',
             loader: ({params})=> {
               console.log(params);
-              return fetch(`http://localhost:5000/courses/${params.id}`);
+              return fetch(`https://e-school-server-nine.vercel.app/courses/${params.id}`);
             },
             element:<CourseByCategory></CourseByCategory>
           },
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
             path:'/courses/:id',
             loader: ({params})=> {
               console.log(params);
-              return fetch(`http://localhost:5000/course/${params.id}`);
+              return fetch(`https://e-school-server-nine.vercel.app/course/${params.id}`);
             },
             element:<CourseDetail></CourseDetail>
           }
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
       {
         path:'/checkout/:id',
         loader: ({params})=> {
-          return fetch(`http://localhost:5000/course/${params.id}`);
+          return fetch(`https://e-school-server-nine.vercel.app/course/${params.id}`);
         },
         element:<PrivateRoute><Checkout></Checkout></PrivateRoute>
         

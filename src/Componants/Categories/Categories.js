@@ -9,7 +9,7 @@ export default function Categories() {
 const [categories, setCategories] = useState([]);
 const {dark} = useContext(AuthContext);
 useEffect(()=>{
-    fetch('http://localhost:5000/categories')
+    fetch('https://e-school-server-nine.vercel.app/categories')
     .then(res=>res.json())
     .then(data=>setCategories(data));
 }, [])
