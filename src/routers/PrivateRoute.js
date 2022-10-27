@@ -9,7 +9,7 @@ export default function PrivateRoute({children}) {
     return children;
   }
   if(loading){
-    return <div>Loading</div>
+    return <div className='mx-auto'><button className="btn loading">loading</button></div>
   }
   return (
     <Navigate to='/login'></Navigate>

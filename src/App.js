@@ -12,6 +12,9 @@ import NotFound from './Layouts/NotFound';
 import PrivateRoute from './routers/PrivateRoute';
 import CourseByCategory from './Pages/CourseByCategory/CourseByCategory';
 import ShowCourses from './Componants/ShowCourses/ShowCourses';
+import { useContext } from 'react';
+import { AuthContext } from './Hooks/AuthProvider/AuthProvider';
+import CourseDetail from './Componants/CourseDetail/CourseDetail';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +58,14 @@ const router = createBrowserRouter([
               return fetch(`http://localhost:5000/courses/${params.id}`);
             },
             element:<CourseByCategory></CourseByCategory>
+          },
+          {
+            path:'/courses/:id',
+            loader: ({params})=> {
+              console.log(params);
+              return fetch(`http://localhost:5000/course/${params.id}`);
+            },
+            element:<CourseDetail></CourseDetail>
           }
         ]
       },
@@ -66,8 +77,9 @@ const router = createBrowserRouter([
   }
 ])
 function App() {
+  const {dark} = useContext(AuthContext);
   return (
-   <RouterProvider router={router}></RouterProvider>
+    <RouterProvider router={router}></RouterProvider>
   );
 }
 

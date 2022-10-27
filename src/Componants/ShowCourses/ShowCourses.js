@@ -10,7 +10,7 @@ export default function ShowCourses() {
         <h1 className='text-2xl font-semibold p-3'>Courses</h1>
         <hr />
         <div className=''>
-            <div className='grid md:grid-cols-2 gap-2'>
+            <div className='grid md:grid-cols-3 sm:grid-cols-2 gap-2'>
                     {
                        loader.map(course=><CourseCard 
                        key={course._id} course={course}></CourseCard>)

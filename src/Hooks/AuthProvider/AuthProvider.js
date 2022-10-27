@@ -11,6 +11,7 @@ export const AuthContext = createContext();
 export default function AuthProvider({children}) {
 const [user, setUser]= useState({});
 const [loading, setLoading] = useState(true);
+const [dark, setDark] = useState(false);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
@@ -51,13 +52,7 @@ const githubProvider = new GithubAuthProvider();
 
   const githubSignIn =()=>{
     setLoading(true);
-    signInWithPopup(auth, githubProvider)
-    .then((result) => {
-        const user = result.user;
-        console.log(user);
-    }).catch((error) => {
-      console.log(error.message);
-    });
+   return signInWithPopup(auth, githubProvider);
   }
 
   useEffect(()=>{
@@ -76,7 +71,7 @@ const githubProvider = new GithubAuthProvider();
      }
     },[user])
 
-    const authUser = {logout,setUser, loginWithEmailAndPassword,updateProfileWithDisplayNameAndPhoto, auth, registerWithEmailAndPassword, googleSignIn, githubSignIn, user, loading}
+    const authUser = {logout,setUser, dark, setDark, loginWithEmailAndPassword,updateProfileWithDisplayNameAndPhoto, auth, registerWithEmailAndPassword, googleSignIn, githubSignIn, user, loading}
   return (
     <AuthContext.Provider value={authUser}>
         {children}

@@ -5,7 +5,7 @@ import Navigation from '../Componants/Shared/Navigation/Navigation'
 
 export default function Main() {
   return (
-    <div>
+    <div className='md:container lg:container md: mx-auto lg: mx-auto'>
         <Navigation></Navigation>
         <Outlet></Outlet>
         <Footer></Footer>
