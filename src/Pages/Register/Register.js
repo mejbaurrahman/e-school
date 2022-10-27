@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 
 export default function Register() {
-  const { registerWithEmailAndPassword,setUser,dark,logout,updateProfileWithDisplayNameAndPhoto} = useContext(AuthContext);
+  const { registerWithEmailAndPassword,setUser, user, dark,logout,updateProfileWithDisplayNameAndPhoto} = useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegistration =(e)=>{
     e.preventDefault();
@@ -20,17 +20,18 @@ export default function Register() {
       .then(()=>{
           console.log('photo updated');
           console.log(user);
-          // setUser(user);
-          setTimeout(()=>{
-            alert('Succesfully Registered! Please login now!')
-          },2000)
-          logout();
+          setUser(user);
+
+          alert(`Succesfully Registered! Please login now with ${user.email}`)
+          
+         
       }).catch((error)=>{
         console.log(error.message);
       });
       
       
       // ...
+      logout();
       navigate('/login');
       form.reset();
     })
@@ -51,29 +52,29 @@ export default function Register() {
     <p className={`py-6 text-center ${dark? 'text-white': 'text-black'}`}>Register now to checkout our courses and get special offer.</p>
 
     </div>
-    <div className={`card flex-shrink-0 w-full max-w-sm shadow-2xl ${dark? 'bg-slate-900':'bg-base-100'}`}>
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <form onSubmit={handleRegistration} className="card-body">
       <div className="form-control">
           <label className="label">
-            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Full Name</span>
+            <span className="label-text">Full Name</span>
           </label>
           <input type="text" name='name' placeholder="name" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Photo Url</span>
+            <span className="label-text">Photo Url</span>
           </label>
           <input type="text" name='photoURL' placeholder="Photo Url" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Email</span>
+            <span className="label-text">Email</span>
           </label>
           <input type="email" name='email' placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className={`label-text ${dark? 'text-white':'text-black'}`}>Password</span>
+            <span className="label-text">Password</span>
           </label>
           <input name='password' type="password" placeholder="password" className="input input-bordered" />
         </div>
