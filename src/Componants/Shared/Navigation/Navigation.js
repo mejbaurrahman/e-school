@@ -23,7 +23,7 @@ export default function Navigation() {
       <li><Link to='/faq'>FAQ</Link></li>
       <li><Link to='/blog'>Blog</Link></li>
       {
-        user.uid? <></> :<><li><Link to='/login'>Login</Link></li>
+        user.uid? <><li><a className='btn btn-primary btn-outline mt-3' onClick={logout}>Logout</a></li></> :<><li><Link to='/login'>Login</Link></li>
         <li><Link to='/register'>Register</Link></li></>
       }
       <li className='text-xl'>
@@ -59,7 +59,7 @@ export default function Navigation() {
       <li><Link to='/faq'>FAQ</Link></li>
       <li><Link to='/blog'>Blog</Link></li>
       {
-        user.uid? <></> :<><li><Link to='/login'>Login</Link></li>
+        user.uid? <><li><a className='btn btn-primary btn-outline mt-3' onClick={logout}>Logout</a></li></> :<><li><Link to='/login'>Login</Link></li>
         <li><Link to='/register'>Register</Link></li></>
       }
        
@@ -96,8 +96,11 @@ export default function Navigation() {
     </label>
 
     <ul tabIndex={0} className={`menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 ${dark? 'bg-slate-800':'bg-base-100'}`}>
-      <li className={`${dark? 'text-white':'text-black'}`}>
-         <Link  to='/profile'>{user?.displayName}</Link>
+      <li className={`${dark? 'text-white bg-slate-800':'text-black bg-base-200'} ms-3`}>
+         <span>{user?.displayName}</span>
+      </li>
+      <li className={`${dark? 'text-white bg-slate-600':'text-black bg-base-200'} rounded`}>
+         <Link  to='/profile'>Profile</Link>
       </li>
       <li><a className='btn btn-primary btn-outline mt-3' onClick={logout}>Logout</a></li>
     </ul>

@@ -11,7 +11,7 @@ export default function Blog() {
             <h1 className={` text-center text-4xl font-semibold ${dark? 'text-white': 'text-black'}`}>Blog</h1>
             <hr />
         </div>
-        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} mty-3 border border-2 border-primary mt-3 p-4`}>
+        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} my-3 border border-2 border-primary mt-3 p-4`}>
             <h1 className={`mb-2 text-center text-xl ${dark? 'text-white': 'text-black'}`}>What is cors?</h1>
             <hr />
             <div className={`${dark? 'text-white': 'text-black'}`}>
@@ -19,7 +19,7 @@ export default function Blog() {
             In other words, CORS is a browser security feature that restricts cross-origin HTTP requests with other servers and specifies which domains access your resources.An API is a set procedure for two programs to communicate. This means that API resources are consumed by other clients and servers.
             </div>
         </div>
-        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} mty-3 border border-2 border-primary mt-3 p-4`}>
+        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} my-3 border border-2 border-primary mt-3 p-4`}>
             <h1 className={`mb-2 text-center text-xl ${dark? 'text-white': 'text-black'}`}>Why are you using firebase? What other options do you have to implement authentication?</h1>
             <hr />
             <div className={`${dark? 'text-white': 'text-black'}`}>
@@ -27,7 +27,7 @@ export default function Blog() {
             There are amny options to handle authentication. such as Auth0 , JSON Web Token, Keycloak, Amazon Cognito  as well as raw mysql authentication.
             </div>
         </div>
-        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} mty-3 border border-2 border-primary mt-3 p-4`}>
+        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} my-3 border border-2 border-primary mt-3 p-4`}>
             <h1 className={`mb-2 text-center text-xl ${dark? 'text-white': 'text-black'}`}>How does the private route work?</h1>
             <hr />
             <div className={`${dark? 'text-white': 'text-black'}`}>
@@ -36,7 +36,7 @@ export default function Blog() {
 If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in).we have wrapped non authenticated routes with PublicRoute component and authenticated routes with PrivateRoute component.
             </div>
         </div>
-        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} mty-3 border border-2 border-primary mt-3 p-4`}>
+        <div className={`  ${dark? 'bg-slate-900': 'bg-base-200'} my-3 border border-2 border-primary mt-3 p-4`}>
             <h1 className={`mb-2 text-center text-xl ${dark? 'text-white': 'text-black'}`}>What is Node? How does Node work?</h1>
             <hr />
             <div className={`${dark? 'text-white': 'text-black'}`}>

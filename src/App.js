@@ -16,6 +16,7 @@ import { useContext } from 'react';
 import { AuthContext } from './Hooks/AuthProvider/AuthProvider';
 import CourseDetail from './Componants/CourseDetail/CourseDetail';
 import Checkout from './Pages/Checkout/Checkout';
+import Profile from './Pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path:'/faq',
         element:<Faq></Faq>
+      },
+      {
+        path:'/profile',
+        element:<Profile></Profile>
       },
       {
         path:'/login',
