@@ -1,6 +1,6 @@
 import React from 'react'
 import { createRef } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Pdf from "react-to-pdf";
 import ReactToPdf from "react-to-pdf";
 
@@ -34,7 +34,7 @@ export default function CourseDetail() {
     <p>{describe}</p>
     <div className="card-actions justify-end">
     
-      <button className="btn btn-secondary">Get Premium Access</button>
+     <Link to={`/checkout/${_id}`}> <button className="btn btn-secondary">Get Premium Access</button></Link>
     </div>
   </div>
 </div> 

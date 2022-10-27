@@ -15,6 +15,7 @@ import ShowCourses from './Componants/ShowCourses/ShowCourses';
 import { useContext } from 'react';
 import { AuthContext } from './Hooks/AuthProvider/AuthProvider';
 import CourseDetail from './Componants/CourseDetail/CourseDetail';
+import Checkout from './Pages/Checkout/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
           }
         ]
       },
+      {
+        path:'/checkout/:id',
+        loader: ({params})=> {
+          return fetch(`http://localhost:5000/course/${params.id}`);
+        },
+        element:<Checkout></Checkout>
+        
+      }
     ]
   },
   {
