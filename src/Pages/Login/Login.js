@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, useLocation, useNavigate} from 'react-router-dom'
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider'
 
 
@@ -7,13 +7,16 @@ export default function Login() {
 
   const { loginWithEmailAndPassword, googleSignIn, githubSignIn, user, loading} = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+  console.log(from);
   const handleGithubSignIn=(e)=>{
     e.preventDefault();
     githubSignIn()
     .then((result) => {
       const user = result.user;
       console.log(user);
-      navigate('/', {replace:true});
+      navigate(from, {replace:true});
       
     // ...
   }).catch((error) => {
@@ -28,6 +31,7 @@ export default function Login() {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, {replace:true});
       // ...
     }).catch((error) => {
       // Handle Errors here.
@@ -45,7 +49,7 @@ export default function Login() {
     .then((userCredential) => {
       const user = userCredential.user;
       form.reset();
-      navigate('/');
+      navigate(from, {replace:true});
     })
     .catch((error) => {
       const errorCode = error.code;
