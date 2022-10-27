@@ -16,8 +16,16 @@ export default function CourseDetail() {
     console.log(loader);
     const {name, _id, categoryName, photo, fee, details, describe} = loader;
   return (
-    <div className='p-3 mt-3' ref={ref}>
-        <div className="card  bg-base-100 shadow-xl">
+    <div className='p-3 m-2 shadow-xl'>
+    <div>
+    <ReactToPdf targetRef={ref} filename={`${name}.pdf`} options={options} scale={1}>
+        {({toPdf}) => (
+            <button className="btn btn-primary" onClick={toPdf}>Download</button>
+        )}
+    </ReactToPdf>
+    </div>
+    <div className='mt-3 pt-2' ref={ref}>
+        <div className="card  bg-base-100">
   <figure><img src={photo} alt="Album"/></figure>
   <div className="card-body">
     <h2 className="card-title">{name}</h2>
@@ -25,17 +33,13 @@ export default function CourseDetail() {
     <div className='divider'></div>
     <p>{describe}</p>
     <div className="card-actions justify-end">
-    <ReactToPdf targetRef={ref} filename="div-blue.pdf" options={options} scale={1}>
-        {({toPdf}) => (
-            <button className="btn btn-primary" onClick={toPdf}>Download</button>
-        )}
-    </ReactToPdf>
-      <button className="btn btn-secondary">Checkout</button>
+    
+      <button className="btn btn-secondary">Get Premium Access</button>
     </div>
   </div>
-</div>
-    
-     
+</div> 
     </div>
+    </div>
+    
   )
 }
