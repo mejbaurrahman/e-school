@@ -10,7 +10,7 @@ export default function ShowCourses() {
     console.log(loader);
   return (
     <div >
-        <h1 className={`text-2xl font-semibold p-3 ${dark? 'text-white bg-slate-800': 'text-black'}`}>Courses</h1>
+        <h1 className={`text-4xl font-semibold p-3 ${dark? 'text-white bg-slate-800': 'text-black'}`}>Courses</h1>
         <hr />
         <div className=''>
             <div className='grid md:grid-cols-3 sm:grid-cols-2 gap-2'>
