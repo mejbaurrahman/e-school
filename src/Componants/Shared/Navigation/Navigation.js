@@ -59,7 +59,7 @@ export default function Navigation() {
       <li><Link to='/faq'>FAQ</Link></li>
       <li><Link to='/blog'>Blog</Link></li>
       {
-        user.uid? <><li><a className='btn btn-primary btn-outline mt-3' onClick={logout}>Logout</a></li></> :<><li><Link to='/login'>Login</Link></li>
+        user.uid? <></> :<><li><Link to='/login'>Login</Link></li>
         <li><Link to='/register'>Register</Link></li></>
       }
        

@@ -8,6 +8,8 @@ import ShowCourses from '../../Componants/ShowCourses/ShowCourses';
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 import coverpagePhoto from '../../images/coverpage.jpg';
 import Courses from '../Courses/Courses';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 export default function Home() {
   const {dark} = useContext(AuthContext);
@@ -15,7 +17,7 @@ export default function Home() {
   const loader2 = loader.slice(0,6);
   return (
     <div className={`${dark? 'text-white': 'text-black'}`}>
-      <div className="hero min-h-screen" style={{ backgroundImage: `url(${coverpagePhoto})` }}>
+      {/* <div className="hero min-h-screen" style={{ backgroundImage: `url(${coverpagePhoto})` }}>
   <div className="hero-overlay bg-opacity-40"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className={`max-w-md px-2 py-4 rounded bg-opacity-25 ${dark? 'bg-slate-800 text-white': 'bg-base-300 text-black'}`}>
@@ -24,7 +26,23 @@ export default function Home() {
       <Link to='/courses'><button className="btn btn-primary">Courses</button></Link>
     </div>
   </div>
-</div>
+</div> */}
+<Carousel>
+                <div className=''>
+                    <img src={coverpagePhoto} className='h-full' />
+                    <h5 className='text-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
+    
+                </div>
+                <div>
+                    <img src={coverpagePhoto} />
+                    <h5 className='text-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
+
+                </div>
+                <div>
+                    <img src={coverpagePhoto} />
+                    <h5 className='text-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
+                </div>
+            </Carousel>
 <div >
         <h1 className={`text-2xl font-semibold mt-4  p-3 text-center ${dark? 'text-white bg-slate-800': 'text-black'}`}>Our Courses</h1>
         <hr />

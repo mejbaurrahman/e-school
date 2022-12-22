@@ -10,7 +10,7 @@ export default function CourseCard({course}) {
 //    console.log(props);
     const {dark} = useContext(AuthContext);
   return (
-    <div className={`m-2 rounded drop-shadow-md ${dark? 'bg-slate-800': 'bg-base-100'}`}>
+    <div data-aos="fade-up-right" className={`m-2 rounded drop-shadow-md ${dark? 'bg-slate-800': 'bg-base-100'}`}>
     <div className="card h-full ">
   <figure><img src={photo} alt="car!" style={{height:'150px', paddingTop: '15px'}}/></figure>
   <div className="card-body">
