@@ -7,6 +7,9 @@ import CourseCard from '../../Componants/CourseCard/CourseCard';
 import ShowCourses from '../../Componants/ShowCourses/ShowCourses';
 import { AuthContext } from '../../Hooks/AuthProvider/AuthProvider';
 import coverpagePhoto from '../../images/coverpage.jpg';
+import first from '../../images/1.jpg';
+import second from '../../images/2.jpg';
+import third from '../../images/3.jpg';
 import Courses from '../Courses/Courses';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -29,17 +32,17 @@ export default function Home() {
 </div> */}
 <Carousel>
                 <div className=''>
-                    <img src={coverpagePhoto} className='h-full' />
-                    <h5 className='text-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
+                    <img src={first} className='h-full' />
+                    <h5 className='ext-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
     
                 </div>
                 <div>
-                    <img src={coverpagePhoto} />
+                    <img src={second} />
                     <h5 className='text-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
 
                 </div>
                 <div>
-                    <img src={coverpagePhoto} />
+                    <img src={third} />
                     <h5 className='text-2xl legend text-black'>E-School <Link to='/courses'><button className='btn btn-primary mx-3'>Courses<FontAwesomeIcon className='mx-2' icon={faArrowCircleRight}></FontAwesomeIcon> </button></Link></h5>
                 </div>
             </Carousel>

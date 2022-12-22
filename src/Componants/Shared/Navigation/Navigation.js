@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navigation.css';
 
 import DarkModeToggle from "react-dark-mode-toggle";
@@ -9,6 +9,11 @@ import logo from '../../../images/logo.png';
 export default function Navigation() {
 
   const {user, logout, dark, setDark} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const signout=()=>{
+    logout();
+    navigate('/')
+  }
   return (
   <div className='md:container mx-auto'>
 <div className={`navbar ${dark? 'bg-slate-700 text-white': 'bg-base-100'}`}>
@@ -102,7 +107,7 @@ export default function Navigation() {
       <li className={`${dark? 'text-white bg-slate-600':'text-black bg-base-200'} rounded`}>
          <Link  to='/profile'>Profile</Link>
       </li>
-      <li><a className='btn btn-primary btn-outline mt-3' onClick={logout}>Logout</a></li>
+      <li><a className='btn btn-primary btn-outline mt-3' onClick={signout}>Logout</a></li>
     </ul>
   </div>:<></>
    }
